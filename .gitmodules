@@ -1,5 +1,5 @@
-[submodule "/Users/godot/.vim/bundle/vundle"]
-	path = /Users/godot/.vim/bundle/Vundle.vim
+[submodule "bundle/Vundle.vim"]
+	path = bundle/Vundle.vim
 	url = http://github.com/gmarik/vundle.git
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
