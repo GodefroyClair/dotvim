@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/usr/share/vim/vim73/indent'
 let g:netrw_dirhist_2='/Users/godot/Music'
 let g:netrw_dirhist_3='/Users/godot/Google Drive/coursera/html-css-javascript/assessment1'
+let g:netrw_dirhist_4='/Users/godot/.bash_sessions'
+let g:netrw_dirhist_5='/Users/godot/.vim/.git'
