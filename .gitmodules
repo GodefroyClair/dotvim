@@ -16,3 +16,6 @@
 [submodule "bundle/vim-textobj-user"]
 	path = bundle/vim-textobj-user
 	url =  https://github.com/kana/vim-textobj-user
+[submodule "bundle/EditPlus"]
+	path = bundle/EditPlus
+	url =  hhttps://github.com/vim-scripts/EditPlus.git
