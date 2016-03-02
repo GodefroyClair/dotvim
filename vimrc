@@ -75,6 +75,8 @@ set ruler
 set number
 set matchpairs+=<:>,":" "add pair symbols to the % tool (which find the matching pair)
 
+" Use UTF-8 everywhere.
+set encoding=utf-8
 
 autocmd bufnewfile *.html,*.htm 0r ~/.vim/templates/html5base.html
 autocmd bufnewfile *.PHP 0r ~/.vim/templates/phpbase.php
@@ -92,6 +94,14 @@ au BufNewFile,BufRead *.py setfiletype python
 autocmd filetype html set omnifunc=htmlcomplete#CompleteTags
 au filetype html iabbrev </ </<c-x><c-o>
 
+"Command mode shortcut
+"cmap Sw w ! sudo tee %  > /dev/null
+"
+"" Nuke Arrow Keys
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
 
 "Invisible character colors 
 highlight NonText guifg=#4a4a59
