@@ -1,36 +1,41 @@
+" .vimrc
+" " Author: Godefroy Clair
+" " Source: 
+" "
+"
+" " Vundle ----------------------------------------------------------------
+" {{{
+
 set nocompatible              " be improved, required
 filetype off                  " required
 
 " set the runtime path to include vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" alternatively, call vundle#begin('~/some/path/here')
 
-" let vundle manage vundle, required
+" vundle manage vundle, required
 Plugin 'vundlevim/vundle.vim'
 
 Plugin 'kana/vim-textobj-user'
 " use ae & ie to select the whole text
 Plugin 'kana/vim-textobj-entire.git'
 
-" keep plugin commands between vundle#begin/end.
 
 
 " the following are examples of different formats supported.
 "" plugin on github repo
-"plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 "put commentary with the gc operator
 Plugin 'tpope/vim-commentary'
+
+Plugin 'scrooloose/syntastic'
 "
 "" plugin from http://vim-scripts.org/vim/scripts.html
 "plugin 'l9'
 "
 "" git plugin not hosted on github
 "plugin 'git://git.wincent.com/command-t.git'
-"
-"" git repos on your local machine (i.e. when working on your own plugin)
-"plugin 'file:///home/gmarik/path/to/plugin'
 "
 "" the sparkup vim script is in a subdirectory of this repo called vim.
 "" pass the path to set the runtimepath properly.
@@ -45,7 +50,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'othree/html5.vim'
 
 
-" all of your plugins must be added before the following line
+" all of your plugins must be added before 
 call vundle#end()            " required
 
 
@@ -66,22 +71,76 @@ filetype plugin indent on    " required
 
 
 syntax on
-set history=300
+
+
+" }}}
+" " Basic options -----------------------------------------------------------
+" {{{
+"
+set encoding=utf-8
+set modelines=0
 set autoindent
+set showmode
+set showcmd
+" set hidden
+set visualbell
+set ttyfast
+set ruler
+" set backspace=indent,eol,start
+set number
+set norelativenumber
+" set laststatus=2
+set history=1000
+" set undofile
+" set undoreload=10000
+set list
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+" set shell=/bin/bash\ --login
+" set lazyredraw
+" set matchtime=3
+set showbreak=↪
+" set splitbelow
+" set splitright
+" set fillchars=diff:⣿,vert:│
+" set autowrite
+" set autoread
+" set shiftround
+set title
+" set linebreak
+set dictionary=/usr/share/dict/words
+" set spellfile=~/.vim/custom-dictionary.utf-8.add
+set colorcolumn=+1
 set expandtab "don't use actual tab character
 set shiftwidth=4 "indenting is 4 spaces
 set softtabstop=4
-set ruler
-set number
 set matchpairs+=<:>,":" "add pair symbols to the % tool (which find the matching pair)
 
-" Use UTF-8 everywhere.
-set encoding=utf-8
 
-autocmd bufnewfile *.html,*.htm 0r ~/.vim/templates/html5base.html
-autocmd bufnewfile *.PHP 0r ~/.vim/templates/phpbase.php
-autocmd bufnewfile,BufRead *.php set filetype=php
-autocmd bufnewfile,BufRead *.PHP set filetype=html
+"Syntastic {{{
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_quiet_messages = { "type": "style" }
+"}}}
+
+" Folding -----------------------------------------------------------------
+" {{{
+
+ set foldlevelstart=0
+ set foldmethod=marker
+
+" " }}}
+
+
+autocmd bufnewfile *.html,*.htm 0r ~/.vim/templates/html5Base.html
+autocmd bufnewfile *.php 0r ~/.vim/templates/phpbase.php
+autocmd bufnewfile,BufRead *.PHP,*.php set filetype=php
 autocmd BufNewFile,BufRead *.rss,*.atom,*.xml setfiletype xml
 autocmd BufNewFile,BufRead *.rss,*.atom,*.xml setfiletype xml
 autocmd BufNewFile,BufRead *.json set ft=javascript
@@ -95,7 +154,7 @@ autocmd filetype html set omnifunc=htmlcomplete#CompleteTags
 au filetype html iabbrev </ </<c-x><c-o>
 
 "Command mode shortcut
-"cmap Sw w ! sudo tee %  > /dev/null
+cmap Sw w ! sudo tee %  > /dev/null
 "
 "" Nuke Arrow Keys
 nnoremap <up> <nop>
