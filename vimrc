@@ -141,7 +141,7 @@ let g:syntastic_quiet_messages = { "type": "style" }
 autocmd bufnewfile *.html,*.htm 0r ~/.vim/templates/html5Base.html
 autocmd bufnewfile *.php 0r ~/.vim/templates/phpbase.php
 autocmd bufnewfile,BufRead *.PHP,*.php set filetype=php
-autocmd BufNewFile,BufRead *.rss,*.atom,*.xml setfiletype xml
+autocmd BufNewFile,BufRead *.conf,*.rss,*.atom,*.xml setfiletype xml
 autocmd BufNewFile,BufRead *.rss,*.atom,*.xml setfiletype xml
 autocmd BufNewFile,BufRead *.json set ft=javascript
 au BufNewFile,BufRead *.py setfiletype python
