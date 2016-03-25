@@ -45,15 +45,19 @@ Plugin 'scrooloose/syntastic'
 "plugin 'user/l9', {'name': 'newl9'}
 "
 "
-"html5 + inline svg omnicomplete function, indent and syntax for vim. based on
-"the default htmlcomplete.vim.
+"html5 + inline svg omnicomplete function, indent and syntax for vim. based on the default htmlcomplete.vim.
 Plugin 'othree/html5.vim'
+
+"php :
+Plugin 'Shougo/vimproc'
+Plugin 'Shougo/unite.vim'
+Plugin 'm2mdas/phpcomplete-extended'
 
 
 " all of your plugins must be added before 
 call vundle#end()            " required
 
-
+set runtimepath+=~/.vim/my-plugins
 
 filetype on
 filetype plugin indent on    " required
@@ -151,7 +155,7 @@ au BufNewFile,BufRead *.py setfiletype python
 "auto-completion
 "au shortcut for autocmd
 autocmd filetype html set omnifunc=htmlcomplete#CompleteTags
-au filetype html iabbrev </ </<c-x><c-o>
+au filetype html,xml,php iabbrev </ </<c-x><c-o>
 
 "Command mode shortcut
 cmap Sw w ! sudo tee %  > /dev/null
