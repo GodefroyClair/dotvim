@@ -16,5 +16,6 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 /*     git submodule init */
 /*     git submodule update */
 
+/*compile vimproc 4 mac & linux */
 cd ~/.vim/bundle/vimproc/
 make
