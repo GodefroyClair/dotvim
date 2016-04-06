@@ -20,6 +20,8 @@ Plugin 'vundlevim/vundle.vim'
 Plugin 'kana/vim-textobj-user'
 " use ae & ie to select the whole text
 Plugin 'kana/vim-textobj-entire.git'
+" use al & il to select the whole line
+Plugin 'kana/vim-textobj-line'
 
 
 
@@ -53,6 +55,24 @@ Plugin 'Shougo/vimproc'
 Plugin 'Shougo/unite.vim'
 Plugin 'm2mdas/phpcomplete-extended'
 
+Plugin 'jalvesaq/Nvim-R'
+
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+"cs shortcut : it provides mappings to easily delete, change and add such surroundings in
+"pairs.
+"exemple cs"' ; cs'<q> ; from tag to double quote cst" ; 
+"remove with ds
+"yank with y...
+Plugin 'tpope/vim-surround'
+
+"https://github.com/tpope/vim-unimpaired
+" complementary pairs of mappings. They mostly fall into four categories.
+" AR
+Plugin 'tpope/vim-unimpaired'
+
+Plugin 'htacg/tidy-html5'
 
 " all of your plugins must be added before 
 call vundle#end()            " required
@@ -61,6 +81,8 @@ set runtimepath+=~/.vim/my-plugins
 
 filetype on
 filetype plugin indent on    " required
+
+runtime macros/matchit.vim
 " to ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -171,3 +193,18 @@ highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
 set nohlsearch
+
+" function! FormatprgLocal(filter)
+"     if !empty(v:char)
+"         return 1
+"     else
+"         let l:command = v:lnum.','.(v:lnum+v:count-1).'!'.a:filter
+"         echo l:command
+"         execute l:command
+"     endif
+" endfunction
+
+" if has("autocmd")
+"     let pandoc_pipeline  = "pandoc --from=html --to=html"
+"     autocmd FileType html setlocal formatexpr=FormatprgLocal(pandoc_pipeline)
+" endif
