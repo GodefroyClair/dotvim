@@ -1,0 +1,1 @@
+screen.vba: call delete('/Users/godot/.vim/autoload/screen.vim')|call delete('/Users/godot/.vim/doc/screen.txt')|call delete('/Users/godot/.vim/plugin/screen.vim')

@@ -1155,8 +1155,8 @@ syn case ignore
     if s:show_semicolon_error
       " match a semicolon or colon which is followed by one of:
       "   = ! . +-*/ &|^ < > , ? :
-      syn match phpSemicolonError contained display extend
-            \ ";\_s*\%(\%(\%(//.*$\|#.*$\|/\*\_.\{-}\*/\)\_s*\)*\)\@>\%([.*/\^|&,:!=<>]\|?>\@!\|++\@!\|--\@!\)"
+      " syn match phpSemicolonError contained display extend
+      "       \ ";\_s*\%(\%(\%(//.*$\|#.*$\|/\*\_.\{-}\*/\)\_s*\)*\)\@>\%([.*/\^|&,:!=<>]\|?>\@!\|++\@!\|--\@!\)"
       syn match phpColonError contained display extend
             \ "::\@!\_s*\%(\%(\%(//.*$\|#.*$\|/\*\_.\{-}\*/\)\_s*\)*\)\@>\%([.*/\^|&,:!=<>]\|?>\@!\|++\@!\|--\@!\)"
     endif
