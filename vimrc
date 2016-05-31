@@ -13,7 +13,7 @@ syntax on
 set nohlsearch
 set encoding=utf-8
 set modelines=0
-set autoindent
+set autoindent "?? pb avec <ctrl v> ??
 set showmode
 set showcmd
 set noexpandtab
@@ -26,12 +26,12 @@ set number
 set norelativenumber
 " set laststatus=2
 set history=1000
-" set undofile
+" set undofile ??
 set undoreload=10000
 set list
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set shell=/bin/bash\ --login
-" set lazyredraw
+set lazyredraw
 " set matchtime=3
 set showbreak=↪
 " set splitbelow
@@ -53,6 +53,7 @@ set matchpairs+=<:>,":" "add pair symbols to the % tool (which find the matching
 
 "PLUGINS TUNING {{{1
 "SYNTASTIC {{{2
+
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -61,16 +62,14 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
-let g:syntastic_quiet_messages = { "type": "style" }
+"let g:syntastic_quiet_messages = { "type": "style" }
 let g:syntastic_php_phpcs_quiet_messages = { 
     \ 'regex': [
     \ 'Short PHP opening tag used with echo',
     \ 'Missing file doc comment',
     \ 'Opening brace should be on a new line',
-    \ 'You must use'
+    \ 'File is being conditionally included'
     \ ] }
-"autocmd filetype php let g:php_folding=2
-let g:DisableAutoPHPFolding = 1
 
 "YOUCOMPLETEME {{{2
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -79,16 +78,20 @@ let g:ycm_use_ultisnips_completer = 1
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
 
-"UTLISNIPS
+"UTLISNIPS {{{2
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" Trigger configuration. Do not use <tab> if you use
-" https://github.com/Valloric/YouCompleteMe.
+" Trigger configuration. Do not use <tab> if you use YouCompleteMe.
 
-"NERD TREE
+"NERD TREE {{{2
 "let g:nerdtree_tabs_open_on_console_startup=1
 
+"Others {{{2
+"autocmd filetype php let g:php_folding=2
+let g:DisableAutoPHPFolding = 1
+"vim-javascript
+let g:javascript_enable_domhtmlcss = 1
 
 " FOLDING {{{1
 
@@ -102,9 +105,11 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 autocmd Bufnewfile *.html,*.htm 0r ~/.vim/templates/html5Base.html
 autocmd Bufnewfile *.php 0r ~/.vim/templates/phpBase.php
 
+" FILETYPE {{{1
+"
 autocmd Bufnewfile,BufRead *.PHP,*.php set filetype=php
 autocmd BufNewFile,BufRead *.conf,*.rss,*.atom,*.xml setfiletype xml
-autocmd BufNewFile,BufRead *.html set ft=html
+autocmd BufNewFile,BufRead *.html,*.ejs set ft=html
 autocmd BufNewFile,BufRead *.json set ft=javascript
 autocmd BufNewFile,BufRead *.r,*.R set ft=r
 autocmd BufNewFile,BufRead *.py set ft=python
@@ -114,9 +119,12 @@ autocmd BufNewFile,BufRead *.py set ft=python
 "auto-completion
 "au shortcut for autocmd
 autocmd filetype html set omnifunc=htmlcomplete#CompleteTags
+autocmd filetype javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd filetype r set shiftwidth=4 "indenting is 4 spaces
 set softtabstop=4
-au filetype html,xml,php iabbrev </ </<c-x><c-o>
+au filetype html,xml,php,javascript iabbrev </ </<c-x><c-o>
+"au filetype html,xml,php,javascript iabbrev </ </<c-x><c-o><Esc>
+"autocmd BufRead,BufNewFile *.html,*.js,*.xmlimap </ </<c-x><c-o><Esc>
 "open nerdtree & put cursor into file to edit
 autocmd vimenter * NERDTree | wincmd p
 "php related

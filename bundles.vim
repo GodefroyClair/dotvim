@@ -8,17 +8,12 @@ call vundle#begin()
 " vundle manage vundle, required
 Plugin 'vundlevim/vundle.vim'
 
-
 "" plugin from http://vim-scripts.org/vim/scripts.html
 "plugin 'l9'
-"
 "" git plugin not hosted on github
 "plugin 'git://git.wincent.com/command-t.git'
-"
-"" the sparkup vim script is in a subdirectory of this repo called vim.
-"" pass the path to set the runtimepath properly.
+" pass the path to set the runtimepath properly.
 "plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-"
 "" avoid a name conflict with l9
 "plugin 'user/l9', {'name': 'newl9'}
 
@@ -27,29 +22,43 @@ Plugin 'vundlevim/vundle.vim'
 """""""""""" PLUGINS : """""""""""""""
 """"""""""""""""""""""""""""""""""""""
 
+" General enhancements
+"
+"" git wrapper 
+Plugin 'tpope/vim-fugitive'
+"put commentary with the gc operator
+Plugin 'tpope/vim-commentary'
+"cs/S shortcut : it provides mappings to delete, change and add surroundings in pairs.
+Plugin 'tpope/vim-surround'
+" Complementary pairs of mappings. Mostly fall into four categories.
+Plugin 'tpope/vim-unimpaired'
+"add info to character revealing with ga 
+Plugin 'tpope/vim-characterize'
+"sugar for the UNIX shell commands
+Plugin 'tpope/vim-eunuch'
+"A set of mappings for HTML, XML, PHP, ASP, eRuby, JSP, etc. 
+"base : <ctrl-X> <ctrl-V>
+Plugin 'tpope/vim-ragtag'
+"Repeat.vim remaps . in a way that plugins can tap into it.
+Plugin 'tpope/vim-repeat'
+
+
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+
+
+" Text object
+"
+"create your own text object
 Plugin 'kana/vim-textobj-user'
 " use ae & ie to select the whole text
 Plugin 'kana/vim-textobj-entire.git'
 " use al & il to select the whole line
 Plugin 'kana/vim-textobj-line'
-
-"" plugin on github repo
-Plugin 'tpope/vim-fugitive'
-"put commentary with the gc operator
-Plugin 'tpope/vim-commentary'
-"cs shortcut : it provides mappings to easily delete, change and add such surroundings in
-"pairs.
-"exemple cs"' ; cs'<q> ; from tag to double quote cst" ; 
-"remove with ds ;  "yank with y...
-Plugin 'tpope/vim-surround'
-
-"https://github.com/tpope/vim-unimpaired
-" complementary pairs of mappings. They mostly fall into four categories.
-" AR
-Plugin 'tpope/vim-unimpaired'
-
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+" use ai or ii to select the whole indented block
+Plugin 'kana/vim-textobj-indent'
+" use ay or iy to select syntax highlighted (e.g in vimrc ~)
+Plugin 'kana/vim-textobj-syntax'
 
 Plugin 'vim-scripts/phpfolding.vim'
 
@@ -68,6 +77,9 @@ Plugin 'godlygeek/tabular'
 "html5 + inline svg omnicomplete function, indent and syntax for vim. based on the default htmlcomplete.vim.
 Plugin 'othree/html5.vim'
 Plugin 'htacg/tidy-html5'
+
+"Javascript js
+Plugin  'pangloss/vim-javascript'
 
 "PHP :
 Plugin 'Shougo/vimproc'
