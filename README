@@ -1,3 +1,7 @@
+Ceci est mon projet git pour openclassrooms :
+la création d'un repository pour partager mes fichier vimrc entre mes différentes terminaux.
+En parti basé sur le repo https://github.com/nelstrom/dotfiles de Drew Neil
+
 Installation:
 
     git clone git://github.com/GodefroyClair/dotvim.git ~/.vim
