@@ -16,7 +16,6 @@ set modelines=0
 set autoindent "?? pb avec <ctrl v> ??
 set showmode
 set showcmd
-set noexpandtab
 " set hidden
 set visualbell
 set ttyfast
@@ -45,9 +44,12 @@ set title
 set dictionary=/usr/share/dict/words
 " set spellfile=~/.vim/custom-dictionary.utf-8.add
 set colorcolumn=+1
+
 set expandtab "don't use actual tab character
-set shiftwidth=4 "indenting is 4 spaces
-set softtabstop=4
+set softtabstop=4 "indenting is 4 spaces
+let &shiftwidth = &softtabstop "shift is the same as softtabstop
+let &tabstop  =  &softtabstop
+
 set matchpairs+=<:>,":" "add pair symbols to the % tool (which find the matching pair)
 
 
@@ -68,7 +70,8 @@ let g:syntastic_php_phpcs_quiet_messages = {
     \ 'Short PHP opening tag used with echo',
     \ 'Missing file doc comment',
     \ 'Opening brace should be on a new line',
-    \ 'File is being conditionally included'
+    \ 'File is being conditionally included',
+    \ 'Opening brace of a class must be on the line'
     \ ] }
 
 "YOUCOMPLETEME {{{2
@@ -102,34 +105,37 @@ let g:javascript_enable_domhtmlcss = 1
 "
 " FRAMEWORKS {{{1
 "
-autocmd Bufnewfile *.html,*.htm 0r ~/.vim/templates/html5Base.html
-autocmd Bufnewfile *.php 0r ~/.vim/templates/phpBase.php
+if has("autocmd")
+    autocmd Bufnewfile *.html,*.htm 0r ~/.vim/templates/html5Base.html
+    autocmd Bufnewfile *.php 0r ~/.vim/templates/phpBase.php
+endif
 
 " FILETYPE {{{1
 "
-autocmd Bufnewfile,BufRead *.PHP,*.php set filetype=php
-autocmd BufNewFile,BufRead *.conf,*.rss,*.atom,*.xml setfiletype xml
-autocmd BufNewFile,BufRead *.html,*.ejs set ft=html
-autocmd BufNewFile,BufRead *.json set ft=javascript
-autocmd BufNewFile,BufRead *.r,*.R set ft=r
-autocmd BufNewFile,BufRead *.py set ft=python
-"BufRead is triggered after the buffer has been populated with the content of a file.
-"BufEnter is triggered after you enter a buffer for editing.You may use BufNew, BufRead or BufAdd if you want to do something upon the creation of the buffer: setting some global variable, populating a buffer list of your own for use in a script.
+if has("autocmd")
+    autocmd Bufnewfile,BufRead *.PHP,*.php set filetype=php
+    autocmd BufNewFile,BufRead *.conf,*.rss,*.atom,*.xml setfiletype xml
+    autocmd BufNewFile,BufRead *.html,*.ejs set ft=html
+    autocmd BufNewFile,BufRead *.json set ft=javascript
+    autocmd BufNewFile,BufRead *.r,*.R set ft=r
+    autocmd BufNewFile,BufRead *.py set ft=python
+    "BufRead is triggered after the buffer has been populated with the content of a file.
+    "BufEnter is triggered after you enter a buffer for editing.
+    "use BufNew, BufRead or BufAdd for things at creation of buffer
 
-"auto-completion
-"au shortcut for autocmd
-autocmd filetype html set omnifunc=htmlcomplete#CompleteTags
-autocmd filetype javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd filetype r set shiftwidth=4 "indenting is 4 spaces
-set softtabstop=4
-au filetype html,xml,php,javascript iabbrev </ </<c-x><c-o>
-"au filetype html,xml,php,javascript iabbrev </ </<c-x><c-o><Esc>
-"autocmd BufRead,BufNewFile *.html,*.js,*.xmlimap </ </<c-x><c-o><Esc>
-"open nerdtree & put cursor into file to edit
-autocmd vimenter * NERDTree | wincmd p
-"php related
-autocmd filetype php set foldmethod=marker
-autocmd filetype vim set foldmethod=marker
+    "auto-completion (au shortcut for autocmd)    
+    autocmd filetype html set omnifunc=htmlcomplete#CompleteTags
+    autocmd filetype javascript set omnifunc=javascriptcomplete#CompleteJS
+    autocmd filetype r set shiftwidth=4 "indenting is 4 spaces
+    au filetype html,xml,php,javascript iabbrev </ </<c-x><c-o>
+    "autocmd BufRead,BufNewFile *.html,*.js,*.xmlimap </ </<c-x><c-o><Esc>
+    "open nerdtree & put cursor into file to edit
+    autocmd vimenter * NERDTree | wincmd p
+
+    "php related
+    autocmd filetype php set foldmethod=marker
+    autocmd filetype vim set foldmethod=marker
+endif "end autocmd condition
 
 "
 " MAP {{{1
