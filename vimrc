@@ -78,6 +78,7 @@ let g:syntastic_php_phpcs_quiet_messages = {
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_use_ultisnips_completer = 1
+"disable the use of tabs and shift tabs forjYCM - use <C-N> & <C-P> instead
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
 
